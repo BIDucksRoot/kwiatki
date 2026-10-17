@@ -77,7 +77,7 @@ Skróty: **Ś** światło, **P** podlewanie, **N** nawóz, **W** wilgotność i 
 
 ## Lubią wilgoć
 
-**Paprocie** (nerecznica *Nephrolepis exaltata*, zanokcica *Asplenium nidus*, adiantum). Ś: półcień, jasne rozproszone. P: stale lekko wilgotno, nigdy nie przesuszyć (adiantum szczególnie), ale nie mokro. W: wysoka; przy grzejniku zasychają. N: uniwersalny albo do paproci pół dawki co 3–4 tyg. IV–IX. T: nietoksyczne. !: zasychanie i opadanie listków od suchego powietrza i przesuszenia.
+**Paprocie** (nefrolepis *Nephrolepis exaltata*, zanokcica *Asplenium nidus*, adiantum). Ś: półcień, jasne rozproszone. P: stale lekko wilgotno, nigdy nie przesuszyć (adiantum szczególnie), ale nie mokro. W: wysoka; przy grzejniku zasychają. N: uniwersalny albo do paproci pół dawki co 3–4 tyg. IV–IX. T: nietoksyczne. !: zasychanie i opadanie listków od suchego powietrza i przesuszenia.
 
 **Kalatea, maranta, stromanta, ktenanta** (*Goeppertia*, dawniej *Calathea*; *Maranta*). Ś: półcień, bez słońca. P: stale lekko wilgotno, miękka woda bez fluoru i wapnia (odstana, filtrowana, z osmozy). W: 50 % i więcej. N: uniwersalny pół dawki co 2–4 tyg. IV–IX. T: nietoksyczne. !: zwijanie liści, gdy za sucho w powietrzu albo w podłożu; brązowe brzegi od suchego powietrza i twardej wody; przędziorki zimą. Składanie liści na noc jest normalne.
 

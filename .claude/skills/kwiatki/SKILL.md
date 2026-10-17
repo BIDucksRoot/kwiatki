@@ -40,7 +40,7 @@ Jeśli zdjęć nie ma w `nowe/`, a użytkownik je załączył, poszukaj ich na d
 
 ### 2. Lista nowych zdjęć
 
-`kwiatki.py nowe` robi podglądy `.podglad/nowe/NN.jpg` (1024 px), arkusze `.podglad/nowe_arkusz_N.jpg` (po 12 miniatur z numerem i godziną) i wypisuje tabelę: numer, czas zrobienia, przerwę od poprzedniego zdjęcia i źródło czasu (EXIF, nazwa pliku albo „plik”, czyli niepewny). Numery zostają ważne do końca sesji (zapisane w `.podglad/nowe.json`), aż znowu uruchomisz `nowe`. Gdy skrypt pisze „HEIC nie do odczytania”, zrób `pip install pillow-heif` i uruchom `nowe` jeszcze raz.
+`kwiatki.py nowe` robi podglądy `.podglad/nowe/NN.jpg` (1024 px), arkusze `.podglad/nowe_arkusz_N.jpg` (po 12 miniatur z numerem i godziną) i wypisuje tabelę: numer, czas zrobienia, przerwę od poprzedniego zdjęcia i źródło czasu (EXIF, nazwa pliku albo „plik”, czyli niepewny). Numery zostają ważne do końca sesji (zapisane w `.podglad/nowe.json`), aż znowu uruchomisz `nowe`. Gdy skrypt pisze „HEIC nie do odczytania”, zrób `pip install pillow-heif` i uruchom `nowe` jeszcze raz. Luki w numeracji plików z aparatu (np. brak IMG_4477–IMG_4478) to zwykle zdjęcia, których użytkownik nie wrzucił: porównaj z rośliną bez zdjęcia i zapytaj o nie w raporcie.
 
 ### 3. Wzorce
 
@@ -72,13 +72,13 @@ Seria prawie identycznych ujęć tej samej rośliny: przypisz najlepsze (ostre, 
 
 ### 5. Przeniesienie
 
-`kwiatki.py przypisz 1=monstera 2=monstera 3=fikus-lirolistny` (albo `IMG_1234.HEIC=monstera`). Skrypt zapisuje zdjęcie jako `rosliny/<slug>/zdjecia/RRRR-MM-DD_GGMMSS.jpg`, pomniejszone, z poprawnym obrotem i bez EXIF, usuwa oryginał z `nowe/` i dopisuje parę do `.podglad/przypisane.json` (z tego zrobisz tabelę „Dopasowanie zdjęć” w raporcie). Gdy zdjęcie nie ma daty (źródło „plik”), dodaj `--data RRRR-MM-DD` z daty sesji.
+`kwiatki.py przypisz 1=monstera 2=monstera:z 3=fikus-lirolistny` (albo `IMG_1234.HEIC=monstera`). `:z` oznacza zbliżenie (liść, plama, podłoże): takie zdjęcie dostaje `_z` w nazwie i nie staje się wzorcem do dopasowania ani miniaturą rośliny, więc oznaczaj tak wszystko, co nie pokazuje całej rośliny. Skrypt zapisuje zdjęcie jako `rosliny/<slug>/zdjecia/RRRR-MM-DD_GGMMSS.jpg`, pomniejszone, z poprawnym obrotem i bez EXIF, usuwa oryginał z `nowe/` i dopisuje parę do `.podglad/przypisane.json` (wpisy z dzisiejszą datą w „dodano” to tabela „Dopasowanie zdjęć” w raporcie). Gdy zdjęcie nie ma daty (źródło „plik”), dodaj `--data RRRR-MM-DD` z daty sesji.
 
 Potem `kwiatki.py brak` pokazuje rośliny bez zdjęcia z tego miesiąca. Zapytaj o nie w raporcie: zapomniane, czy już ich nie ma (wtedy po potwierdzeniu `git mv rosliny/<slug> rosliny/_archiwum/<slug>` i wpis w historii karty, dlaczego).
 
 ### 6. Ocena każdej rośliny
 
-Dla każdej sfotografowanej rośliny przeczytaj kartę i 2–3 ostatnie wpisy dziennika (żeby wiedzieć, co zalecałeś i co miało się poprawić), a potem obejrzyj obok siebie nowe zdjęcie i zdjęcie z poprzedniego przeglądu. Co kilka miesięcy porównaj też z pierwszym zdjęciem: powolne zmiany łatwo przegapić z miesiąca na miesiąc.
+Dla każdej sfotografowanej rośliny przeczytaj kartę i 2–3 ostatnie wpisy dziennika (żeby wiedzieć, co zalecałeś i co miało się poprawić), a potem obejrzyj porównanie: `kwiatki.py porownaj` (bez nazw: wszystkie rośliny z ostatniej sesji) robi `.podglad/porownanie/<slug>.jpg` z całą rośliną z poprzedniego przeglądu, teraz i zbliżeniami, a od trzeciego przeglądu także z pierwszym zdjęciem, bo powolne zmiany łatwo przegapić z miesiąca na miesiąc.
 
 Na co patrzeć: nowe liście i pędy (policz, to najlepszy dowód, że roślina rośnie), kolor starych i młodych liści, końcówki i brzegi, plamy, liście opadłe i zwisające, pokrój (wyciąganie się, pochylanie do okna), podłoże (nalot, pleśń, odstawanie od ścianek), korzenie przy dnie i na wierzchu, proporcja rośliny do doniczki, ślady szkodników, kwiaty i pąki.
 
@@ -90,6 +90,8 @@ Zdjęcia z dwóch miesięcy rzadko są zrobione tak samo. Inne światło, balans
 - 3: coś jej dolega, ale nie pilne (wyciąga się, kilka liści z plamami)
 - 2: wyraźny problem, działać w tym miesiącu (szkodniki, gnicie, duża utrata liści)
 - 1: ratunek, zostało niewiele zdrowej rośliny
+
+Stan opisuje, jak roślina wygląda teraz, a ryzyko widać w trendzie i zaleceniach. Gdy objawy wskazują na początek poważnego problemu (gnicie korzeni, szkodniki), daj najwyżej 3, żeby nie zginęło w tabeli.
 
 **Trend** względem poprzedniego przeglądu: lepiej, bez zmian, gorzej albo nie da się ocenić. W tabelach ↑ → ↓ ?.
 
@@ -107,7 +109,7 @@ Bądź konkretny (liczby, nazwy, terminy), ale nie udawaj precyzji, której nie 
 
 ### 8. Zapis
 
-1. **Dziennik** każdej rośliny: nowy wpis według `szablony/wpis.md`, zaraz pod nagłówkiem pliku (najnowszy na górze), z miniaturami zdjęcia teraz i z poprzedniego przeglądu. „Co zrobiono od ostatniego przeglądu” wypełnij tym, co powiedział użytkownik, inaczej „brak informacji”.
+1. **Dziennik** każdej sfotografowanej rośliny: nowy wpis według `szablony/wpis.md`, zaraz pod nagłówkiem pliku (najnowszy na górze), z datą zdjęć (nie datą przeglądu), miniaturami całej rośliny teraz i z poprzedniego przeglądu i mniejszymi miniaturami zbliżeń. „Co zrobiono od ostatniego przeglądu” wypełnij tym, co powiedział użytkownik, inaczej „brak informacji”. Roślina bez zdjęcia nie dostaje wpisu (nie wiadomo, jak się ma), tylko wiersz w raporcie.
 2. **Karta**: popraw to, co się zmieniło (miejsce, doniczka, podlewanie, znaki rozpoznawcze) i dopisz do „Historii” zdarzenia (przesadzenie, cięcie, szkodniki, przestawienie).
 3. **Raport** `raporty/RRRR-MM.md` według `szablony/raport.md`. Najważniejsze są „W skrócie” i „Plan na miesiąc”: rośliny pogrupowane według rytmu podlewania, lista nawożenia i zabiegów do odhaczenia, zakupy zebrane ze wszystkich roślin. Jeśli raport z tego miesiąca już jest (druga tura zdjęć), dopisz do niego sekcję „Uzupełnienie RRRR-MM-DD”.
 4. **Spis**: `kwiatki.py spis` odświeża `rosliny/README.md` (miniatura, stan i trend z ostatniego wpisu).
@@ -124,7 +126,7 @@ Gdy zdjęcie nie pasuje do żadnej rośliny (albo to pierwszy przegląd i rośli
 
 1. Pogrupuj zdjęcia nowej rośliny (cała roślina i zbliżenia).
 2. Rozpoznaj gatunek i napisz, jak bardzo jesteś pewny („prawdopodobnie *Epipremnum aureum*”). Zaproponuj slug: polska nazwa zwyczajowa małymi literami, z miejscem albo cechą, gdy roślin tego gatunku jest więcej (`sansewieria-kuchnia`, `monstera-duza`). Slugów później nie zmieniaj, bo psują się linki w raportach.
-3. `kwiatki.py nowa <slug> --nazwa "Sansewieria w kuchni" --gatunek "Dracaena trifasciata"` zakłada folder z kartą i dziennikiem.
+3. `kwiatki.py nowa <slug> --nazwa "Sansewieria w kuchni" --gatunek "Dracaena trifasciata" --data RRRR-MM-DD` (data zdjęć) zakłada folder z kartą i dziennikiem.
 4. Wypełnij kartę tym, co widać (doniczka, tło, prawdopodobne okno, znaki rozpoznawcze) i potrzebami gatunku (`references/gatunki.md`). Czego nie widać, zostaw jako „do uzupełnienia” i zbierz w pytaniach: gdzie stoi i na którą stronę świata jest okno, jak i czym jest teraz podlewana, od kiedy jest i kiedy była przesadzana.
 5. Pierwszy wpis w dzienniku ma trend „pierwszy przegląd”.
 

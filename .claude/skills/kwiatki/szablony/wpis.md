@@ -2,7 +2,9 @@
 
 <img src="zdjecia/RRRR-MM-DD_HHMMSS.jpg" width="300"> <img src="zdjecia/<poprzednie>.jpg" width="300">
 
-Teraz i poprzedni przegląd (RRRR-MM-DD).
+Teraz i poprzedni przegląd (RRRR-MM-DD). Zbliżenia (jeśli są):
+
+<img src="zdjecia/RRRR-MM-DD_HHMMSS_z.jpg" width="200">
 
 - **Stan:** 4/5, <kilka słów>
 - **Trend:** lepiej / bez zmian / gorzej / nie da się ocenić (względem RRRR-MM-DD)

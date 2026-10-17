@@ -20,8 +20,11 @@ Data zdjęć: RRRR-MM-DD. Następny przegląd: ok. RRRR-MM-DD.
 
 ### Podlewanie
 
-- **Mniej więcej co tydzień:** <rośliny>
-- **Co ok. 2 tygodnie:** <rośliny>
+<Grupy dobierz do roślin i pory roku, np.:>
+
+- **Co 5–7 dni:** <rośliny>
+- **Co 7–10 dni:** <rośliny>
+- **Co 2–3 tygodnie:** <rośliny>
 - **Raz w miesiącu albo rzadziej:** <rośliny>
 - **Storczyki (moczenie):** <rośliny>
 
@@ -43,11 +46,11 @@ Zawsze najpierw sprawdzić palcem albo wagą doniczki, liczba dni to tylko orien
 
 | Zdjęcie | Roślina | Pewność |
 |---|---|---|
-| <oryginalna nazwa pliku> | <slug> | pewne / prawdopodobne / zapytane |
+| <oryginalna nazwa pliku> | <slug>, zbliżenie? | pewne / prawdopodobne / od użytkownika, i po czym |
 
 ## Bez zdjęcia w tym miesiącu
 
-<rośliny albo „wszystkie są”>
+<rośliny albo „wszystkie są”; zdjęcia niepewne, które zostały w nowe/>
 
 ## Pytania
 
